@@ -74,7 +74,7 @@ dev = [
 
 [tool.uv]
 preview = true
-package = true
+package = false
 default-groups = ["runtime"]
 cache-dir = ".cache/uv"
 compile-bytecode = true
