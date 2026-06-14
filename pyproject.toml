@@ -40,9 +40,6 @@ dependencies = [
     "uvloop>=0.22.1",
 ]
 
-[project.scripts]
-perplexity-mcp = "perplexity_mcp.main:create_server"
-
 # --- PROJECT URLS ---
 
 [project.urls]
