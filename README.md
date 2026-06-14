@@ -12,7 +12,7 @@ A Type 3 DAuth MCP server for [Perplexity AI](https://perplexity.ai) API. Provid
 
 ## Authentication
 
-This server uses **Type 3 DAuth** (Dedalus Auth) — your API key is encrypted client-side.
+This server uses **Type 3 DAuth** (Dedalus Auth) — your API key is encrypted client-side and decrypted in a secure Dedalus enclave.
 
 ### Get Your Perplexity API Key
 
@@ -32,12 +32,12 @@ cp .env.example .env
 
 ## Available Tools
 
-### `search_answer`
+### `perplexity_search_answer`
 
 Search the web and get answers with citations.
 
 ```python
-search_answer(
+perplexity_search_answer(
     query="What is Model Context Protocol?",
     model="sonar",
     return_images=True,
@@ -46,12 +46,12 @@ search_answer(
 )
 ```
 
-### `chat`
+### `perplexity_chat`
 
 Chat with Perplexity AI.
 
 ```python
-chat(
+perplexity_chat(
     model="sonar",
     messages=[{"role": "user", "content": "Hello!"}],
     temperature=0.2,
@@ -59,28 +59,28 @@ chat(
 )
 ```
 
-### `list_models`
+### `perplexity_list_models`
 
 List available Perplexity models.
 
 ```python
-list_models()
+perplexity_list_models()
 ```
 
-### `moderate`
+### `perplexity_moderate`
 
 Check content for harmful material.
 
 ```python
-moderate(text="This is a test message")
+perplexity_moderate(text="This is a test message")
 ```
 
-### `embed`
+### `perplexity_embed`
 
 Generate text embeddings.
 
 ```python
-embed(
+perplexity_embed(
     input="Hello world",
     model="embed",
 )
