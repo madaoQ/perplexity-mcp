@@ -11,6 +11,10 @@ from typing import Any, Literal
 from pydantic import BaseModel, ConfigDict, Field
 
 
+# Reusable config: immutable, slotted.
+_FROZEN_SLOT = ConfigDict(frozen=True, slots=True)
+
+
 class SearchResult(BaseModel):
     """Search result with citations."""
     model_config = _FROZEN_SLOT
