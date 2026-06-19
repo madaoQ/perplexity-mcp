@@ -8,11 +8,13 @@ from __future__ import annotations
 from datetime import datetime
 from typing import Any, Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
-class SearchResult(BaseModel, frozen=True, slots=True):
+class SearchResult(BaseModel):
     """Search result with citations."""
+    model_config = _FROZEN_SLOT
+
 
     id: str | None = None
     text: str | None = None
@@ -21,24 +23,30 @@ class SearchResult(BaseModel, frozen=True, slots=True):
     image_url: str | None = None
 
 
-class SearchResponse(BaseModel, frozen=True, slots=True):
+class SearchResponse(BaseModel):
     """Search API response."""
+    model_config = _FROZEN_SLOT
+
 
     results: list[SearchResult] = Field(default_factory=list)
     query: str | None = None
     total: int | None = None
 
 
-class Message(BaseModel, frozen=True, slots=True):
+class Message(BaseModel):
     """Chat message."""
+    model_config = _FROZEN_SLOT
+
 
     role: str
     content: str
     name: str | None = None
 
 
-class ChatResponse(BaseModel, frozen=True, slots=True):
+class ChatResponse(BaseModel):
     """Chat API response."""
+    model_config = _FROZEN_SLOT
+
 
     id: str | None = None
     model: str | None = None
@@ -47,29 +55,37 @@ class ChatResponse(BaseModel, frozen=True, slots=True):
     created: int | None = None
 
 
-class ModelInfo(BaseModel, frozen=True, slots=True):
+class ModelInfo(BaseModel):
     """Perplexity model info."""
+    model_config = _FROZEN_SLOT
+
 
     id: str
     name: str
     description: str | None = None
 
 
-class ModelList(BaseModel, frozen=True, slots=True):
+class ModelList(BaseModel):
     """List of available models."""
+    model_config = _FROZEN_SLOT
+
 
     models: list[ModelInfo]
 
 
-class ModerationResponse(BaseModel, frozen=True, slots=True):
+class ModerationResponse(BaseModel):
     """Content moderation result."""
+    model_config = _FROZEN_SLOT
+
 
     flagged: bool | None = None
     categories: dict[str, Any] = Field(default_factory=dict)
 
 
-class EmbeddingResponse(BaseModel, frozen=True, slots=True):
+class EmbeddingResponse(BaseModel):
     """Embedding API response."""
+    model_config = _FROZEN_SLOT
+
 
     model: str | None = None
     embeddings: list[list[float]] = Field(default_factory=list)
